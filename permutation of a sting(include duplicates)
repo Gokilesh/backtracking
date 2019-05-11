@@ -1,0 +1,47 @@
+#include<stdio.h>
+void permut(char str[],int count[],char result[],int level);
+int main()
+{
+	char array[] ="AABC";
+	char str[4];
+	int count[4],i;
+	char result[4];
+	
+	int temp[100]={0};
+	for(i=0;i<4;i++)
+	{
+		temp[array[i]]++;	
+	}
+	int t=0;
+	for(i=0;i<100;i++)
+	{
+		if(temp[i]!=0)
+		{
+			str[t] = i;
+			count[t] = temp[i];	
+			t++;
+		}
+	}
+	permut(str,count,result,0);
+}
+void permut(char str[],int count[],char result[],int level)
+{int i;
+
+	if(level==4)
+	{
+		printf("\n%s",result);
+		return;
+	}
+	else
+	{
+		for(i=0;i<=3;i++)
+		{		
+			if(count[i] == 0)
+				continue;
+			count[i]--;
+			result[level] = str[i];
+			permut(str,count,result,level+1);
+			count[i]++;
+		}		
+	}		
+}
