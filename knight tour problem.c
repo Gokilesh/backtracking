@@ -19,7 +19,10 @@ int main()
 	int count=2;
 	x = 0;
 	y=0;
-	knight(matrix,xarray,yarray,x,y,count);
+	if(!knight(matrix,xarray,yarray,x,y,count))
+	{
+		printf("knight cant travel all the square");
+	}
 	
 }
 int knight(int matrix[8][8],int xarray[],int yarray[],int x,int y,int count)
